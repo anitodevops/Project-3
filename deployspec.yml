@@ -1,0 +1,26 @@
+version: 0.2
+
+env:
+  variables:
+    REGION: "ap-south-1"
+    CLUSTER_NAME: "mindtrack"
+    REPO_NAME: "project3/mindtrack-prod"
+    REPO_URI: "224679997553.dkr.ecr.ap-south-1.amazonaws.com/project3/mindtrack-prod"
+
+phases:
+  pre_build:
+    commands:
+      - aws eks update-kubeconfig --region $REGION --name $CLUSTER_NAME
+
+  build:
+    commands:
+      - |
+          LATEST_TAG=$(aws ecr describe-images --repository-name ${REPO_NAME} --query 'sort_by(imageDetails,& imagePushedAt)[-1].imageTags[0]' --output text)
+          if kubectl get deploy mindtrack-deploy >/dev/null 2>&1; then
+            kubectl set image deployment/mindtrack-deploy mindtrack-container=$REPO_URI:$LATEST_TAG
+            kubectl rollout restart deployment/mindtrack-deploy
+          else
+            sed -i "s|image:.*|image: $REPO_URI:$LATEST_TAG|g" deployment.yaml
+            kubectl apply -f deployment.yaml
+            kubectl apply -f service.yaml
+          fi
