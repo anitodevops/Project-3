@@ -1,0 +1,31 @@
+version: 0.2
+
+env:
+  variables:
+    REGION: "ap-south-1"
+    ACCT_ID: "224679997553"
+    BUILD_NAME: "project3/mindtrack-prod"
+    TAG: "latest"
+    REPO_URI: "224679997553.dkr.ecr.ap-south-1.amazonaws.com/project3/mindtrack-prod"
+
+phases:
+  pre_build:
+    commands:
+      - aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $ACCT_ID.dkr.ecr.$REGION.amazonaws.com 
+  
+  build:
+    commands:
+      - docker build -t $BUILD_NAME:$TAG .
+      - docker tag $BUILD_NAME:$TAG $REPO_URI:$TAG
+
+  post_build:
+    commands:
+      - docker push $REPO_URI:$TAG
+      - printf '[{"name":"MindTrack","imageUri":"%s.dkr.ecr.%s.amazonaws.com/%s:%s"}]' $ACCT_ID $REGION $BUILD_NAME $TAG > imageinfo.json
+
+artifacts:
+  files:
+    - imageinfo.json
+    - deployment.yaml
+    - service.yaml
+

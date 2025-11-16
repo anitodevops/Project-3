@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mindtrack-deploy
+  labels:
+    app: mindtrack
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mindtrack
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: mindtrack
+    spec: 
+      containers: 
+        - name: mindtrack-container
+          image: 224679997553.dkr.ecr.ap-south-1.amazonaws.com/project3/mindtrack-prod:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
