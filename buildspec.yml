@@ -24,8 +24,10 @@ phases:
       - printf '[{"name":"MindTrack","imageUri":"%s.dkr.ecr.%s.amazonaws.com/%s:%s"}]' $ACCT_ID $REGION $BUILD_NAME $TAG > imageinfo.json
 
 artifacts:
+  discard-paths: yes
   files:
     - imageinfo.json
     - deployment.yaml
     - service.yaml
+ 
 
