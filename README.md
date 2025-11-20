@@ -4,13 +4,13 @@
 
 ### Table Of Contents 
 
--	[Goal]
--	[Pre-Requisites]
--	[Application Deployment Architecture]
--	[Architecture Overview]
--	[Project WorkFlow]
--	[Links]
--	[Outcome]
+-	[Goal](https://github.com/anitodevops/Project-3/tree/main#goal)
+-	[Pre-Requisites](https://github.com/anitodevops/Project-3/tree/main#pre-requisites)
+-	[Application Deployment Architecture](https://github.com/anitodevops/Project-3/tree/main#application-deployment-architecture)
+-	[Architecture Overview](https://github.com/anitodevops/Project-3/tree/main#architecture-overview)
+-	[Project WorkFlow](https://github.com/anitodevops/Project-3/tree/main#project-workflow)
+-	[Links](https://github.com/anitodevops/Project-3/tree/main#links)
+-	[Outcome](https://github.com/anitodevops/Project-3/tree/main#project-outcome)
   
 ## Goal
 
@@ -53,6 +53,8 @@ To deploy the **Mind Track  Application** into a production-ready environment on
 - [CI/CD with CodePipeline](https://github.com/anitodevops/Project-3/blob/main/ProjectFlow/CodePipeline.md)
 
 - [Monitor & Log with AWS CloudWatch](https://github.com/anitodevops/Project-3/blob/main/ProjectFlow/CloudWatch.md)
+  
+- [Troubleshooting](https://github.com/anitodevops/Project-3/blob/main/ProjectFlow/Troubleshooting.md)
 
 ## Links
 
