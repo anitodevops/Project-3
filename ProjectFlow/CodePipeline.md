@@ -35,20 +35,20 @@ choose IAM principal ARN -> select the codepipeline-mindtrack-pipe role , type-s
 
 ### Setup CodePipeline
 #### creation option
-- Create pipeline -> build custom pipeline -> OK
+- Create pipeline -> build custom pipeline -> Next
 
 ![step-1](https://github.com/anitodevops/Project-3/blob/main/Images/codepipeline%20Setup-1.png)
 
 #### pipeline settings
 - Enter pipeline name - Mindtrack-pipeline 
-- Choose new service role -> auto creates the role& policy
+- Choose new service role -> auto creates the role& policy -> Next
 
 ![step-2](https://github.com/anitodevops/Project-3/blob/main/Images/codepipeline%20Setup-2.png)
 
 ####  Source Stage
 - Choose Source -> Github App 
 -  Repository name & branch 
--  Enable webhooks (by default)
+-  Enable webhooks (by default) -> Next
 
 ![step-3](https://github.com/anitodevops/Project-3/blob/main/Images/codepipeline%20Setup-3.png)
 
@@ -59,7 +59,7 @@ Source artifact (ZIP) is passed to the Build stage.
 #### build stage
 - Choose buildstage -> AWS codebuild 
 - project name - mindtrack-build 
-- Input artifacts - source artifacts  
+- Input artifacts - source artifacts  -> Next
 
 ![step-4](https://github.com/anitodevops/Project-3/blob/main/Images/codepipeline%20Setup-4.png)
 
@@ -78,7 +78,7 @@ Stores updated Kubernetes manifests as the Build Artifact for Deploy stage.
 - Deploy stage -> Amazon EKS -> input artifacts (build artifact)
 - Choose cluster -> mindtrack
 - Deploy config type -> kubectl 
-- Manifest file paths -> deployment.yaml,service.yaml ( give commas after each file)
+- Manifest file paths -> deployment.yaml,service.yaml ( give commas after each file)-> Next
 
 ![step-5](https://github.com/anitodevops/Project-3/blob/main/Images/codepipeline%20Setup-5.png)
 
@@ -90,7 +90,7 @@ if not available runs & creates the deployments & service.
 Loadbalancer gets created/Updated automatically,
 Application becomes available publicly through the LoadBalancer URL.
 
-#### Review & create Pipeline 
+#### Review & create Pipeline -> create pipeline
 
 ![pipeline](https://github.com/anitodevops/Project-3/blob/main/Images/Mindtrack-pipeline.png)
 
