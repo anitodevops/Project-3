@@ -28,13 +28,13 @@ To deploy the **Mind Track  Application** into a production-ready environment on
 ## Architecture Overview
 
 -	Developer pushes code → GitHub Repository
--	AWS CodePipeline is triggered.
--	CodeBuild builds Docker image → pushes to ECR (Elastic Container Registry).
--	CodeDeploy deploys the image to EKS Cluster using Kubernetes manifests
+-	AWS CodePipeline is triggered
+-	CodeBuild builds Docker image → pushes to ECR (Elastic Container Registry)
+-	CodeDeploy - Instead of deploy service codeBuild deploys the image to EKS Cluster using Kubernetes manifests
 	-	Deployment.yaml
 	-	Service.yaml
--	CloudWatch Logs monitors the build, deploy, EKS & the application logs.
--	The app runs at port 3000 on an EKS LoadBalancer.
+-	CloudWatch Logs monitors the build, deploy, EKS & the application logs
+-	The app runs at port 3000 on an EKS LoadBalancer
 
 ## Project WorkFlow 
 
