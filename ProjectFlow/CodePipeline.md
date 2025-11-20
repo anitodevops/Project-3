@@ -31,7 +31,7 @@ choose IAM principal ARN -> select the codepipeline-mindtrack-pipe role , type-s
 
 **Updated Cluster Policy  :**
 
-![step-3](https://github.com/anitodevops/Project-3/blob/main/Images/EKS%20Admin%20Policy%20Setup%20-3.png)
+![step-3](https://github.com/anitodevops/Project-3/blob/main/Images/EKS%20Cluster%20-%20add%20EKSAdminPolicy.png)
 
 ### Setup CodePipeline
 #### creation option
