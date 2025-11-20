@@ -10,7 +10,7 @@
 -	[Architecture Overview](https://github.com/anitodevops/Project-3/tree/main#architecture-overview)
 -	[Project WorkFlow](https://github.com/anitodevops/Project-3/tree/main#project-workflow)
 -	[Links](https://github.com/anitodevops/Project-3/tree/main#links)
--	[Outcome](https://github.com/anitodevops/Project-3/tree/main#project-outcome)
+-	[Project Outcome](https://github.com/anitodevops/Project-3/tree/main#project-outcome)
   
 ## Goal
 
