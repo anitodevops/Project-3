@@ -1,59 +1,70 @@
-# PROJECT - 3 MINDTRACK  
+# PROJECT – 3   Mind Track
 
-## APPLICATION DEPLOYMENT FLOW:
+![CICD](https://github.com/anitodevops/Project-3/blob/main/Images/cicd.png)
+
+### Table Of Contents 
+
+-	[Goal]
+-	[Pre-Requisites]
+-	[Application Deployment Architecture]
+-	[Architecture Overview]
+-	[Project WorkFlow]
+-	[Links]
+-	[Outcome]
+  
+## Goal
+
+To deploy the **Mind Track  Application** into a production-ready environment on **port 3000** using AWS ECR,  AWS EKS,  AWS CI/CD   and to seamlessly monitor the Pipeline using AWS CloudWatch logs.
+
+## Pre-Requisites
+-	[AWS Account](https://signin.aws.amazon.com/signup?request_type=register)
+-	[GitHub Account](https://github.com/)
+-	[Source Code](https://github.com/Vennilavan12/Brain-Tasks-App.git)
+  
+## Application Deployment Architecture 
+
+![Architecture](https://github.com/anitodevops/Project-3/blob/main/Images/Architecture.png)
+
+## Architecture Overview
+
+-	Developer pushes code → GitHub Repository
+-	AWS CodePipeline is triggered.
+-	CodeBuild builds Docker image → pushes to ECR (Elastic Container Registry).
+-	CodeDeploy deploys the image to EKS Cluster using Kubernetes manifests
+	-	Deployment.yaml
+	-	Service.yaml
+-	CloudWatch Logs monitors the build, deploy, EKS & the application logs.
+-	The app runs at port 3000 on an EKS LoadBalancer.
+
+## Project WorkFlow 
+
+- [Workspace Setup](https://github.com/anitodevops/Project-3/blob/main/ProjectFlow/Workspace.md)
+  
+- [Dockerization](https://github.com/anitodevops/Project-3/blob/main/ProjectFlow/Dockerization.md)
+
+- [Image push to Amazon ECR](https://github.com/anitodevops/Project-3/blob/main/ProjectFlow/ECR.md)
+
+- [Kubernetes Cluster on Amazon EKS](https://github.com/anitodevops/Project-3/blob/main/ProjectFlow/EKS.md) 
+
+- [AWS CodeBuild](https://github.com/anitodevops/Project-3/blob/main/ProjectFlow/CodeBuild.md)
+
+- [AWS CodeDeploy](https://github.com/anitodevops/Project-3/blob/main/ProjectFlow/CodeDeploy.md)
+
+- [CI/CD with CodePipeline](https://github.com/anitodevops/Project-3/blob/main/ProjectFlow/CodePipeline.md)
+
+- [Monitor & Log with AWS CloudWatch](https://github.com/anitodevops/Project-3/blob/main/ProjectFlow/CloudWatch.md)
+
+## Links
+
+-	Application LoadBalancer URL: http://aob15fc48056e4e409c80c59672d81ab-868196590.ap-south-1.elb.amazonaws.com
+
+## Project Outcome
+
+- Achieved Zero Downtime & deployed the application on Production ready state.
+- Fully automated CI/CD pipeline via AWS services (CodePipeline, CodeBuild, ECR, and EKS).
+- Enables secure public access via LB and zero-downtime using Kubernetes services 
 
 
----
 
-## LINKS:
-Git Repo Link: https://github.com/anitodevops/Project-3.git
-Load Balancer URL:
 
----
-
-## MINDTRACK-PIPELINE FLOW: (Source → Build → Deploy)
-
-### 1. Source Stage (GitHub → CodePipeline)
-
-CodePipeline is connected to your GitHub repository.
-Any push made to the main branch triggers the pipeline automatically.
-Source artifact (ZIP) is passed to the Build stage.
-
-### 2. Build Stage (AWS CodeBuild)
-
-CodeBuild reads the buildspec.yml file.
-Authenticate to Amazon Elastic Container Registry.
-Builds the Docker image using Dockerfile.
-Tags the image to the ECR RepoURI - mindtrack-prod
-Pushes the image to ECR repository.
-Updates the  deployment.yaml by fetching the new ECR image URI.
-Stores updated Kubernetes manifests as the Build Artifact for Deploy stage.
-
-### 3. Deploy Stage (AWS EKS Provider using kubectl)
-
-Pipeline uses a custom deploy EKS provider to deploy using kubectl by Connecting to the EKS cluster.
-Fetches the manifest files deployment.yaml and service.yaml from the Build Stage Artifact.
-Checks if the deployment is available 
-if deployment exists Updates image inside deployment manifest & rollouts the chnages.
-if not available runs & creates the deployments & service.
-Loadbalancer gets created/Updated automatically,
-Application becomes available publicly through the LoadBalancer URL.
-
----
-
-## SETUP INSTRUCTIONS:
-
-### Docker
-
-### ECR
-
-### Kubernetes
-
-### Code build
-
-### Code deploy
-
-### Code pipeline
-
-### Monitoring
 
