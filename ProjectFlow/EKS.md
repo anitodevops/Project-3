@@ -50,8 +50,6 @@ Create deployment:
 
 `kubectl get pods` -> successful deployment shows pods in running state.
 
-![deploy](https://github.com/anitodevops/Project-3/blob/main/Images/K8s%20deployment%20check.png)
-
 ### Service.yaml
 
 Choose spec: type: LoadBalancer to access the application  externally
@@ -64,6 +62,9 @@ Create Service:
 `kubectl get svc` -> successful creation shows LB  in External IP ,  running on port 80.
 
 ![deploysvc](https://github.com/anitodevops/Project-3/blob/main/Images/K8s%20Manifest%20-%20Deploy%20&%20Svc%20.png)
+
+
+![deploy](https://github.com/anitodevops/Project-3/blob/main/Images/K8s%20deployment%20check.png)
 
 verify LB url :[http://a70ed0f644c19475a858f88b992f2be2-1981579793.ap-south-1.elb.amazonaws.com/]
 
